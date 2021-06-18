@@ -194,7 +194,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/NotoSansJP-Medium.otf", "start": 0, "end": 4564400, "audio": 0}], "remote_package_size": 4564400, "package_uuid": "33a3faad-ca9f-47f1-96a8-2e3c47d1693e"});
+   loadPackage({"files": [{"filename": "/NotoSansJP-Medium.otf", "start": 0, "end": 4564400, "audio": 0}], "remote_package_size": 4564400, "package_uuid": "f44c5898-fb04-41ab-9121-dbc615ab6c5c"});
   
   })();
   
