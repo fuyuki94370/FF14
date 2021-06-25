@@ -1,0 +1,98 @@
+<html>
+	<meta charset='utf-8'>
+	<head>
+		<title>期待値</title>
+	</head>
+	<style>
+		body{
+			font-size: 25px;
+			background-color: black;
+			color: white;
+		}
+
+		.collapsible{
+			display: none;
+			border:1px solid white;
+		}
+	</style>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>	
+
+	<body>
+		<hr>
+		すべての可能性の個数：9!<br>
+		123のラインがある場合の個数：\(8 \cdot 3! \cdot 6!\)<button id="expand1">展開</button>
+		<div id="tab1" class="collapsible">
+			ラインの方向や位置：8種<br>
+			ライン内の数字の構成：3!種<br>
+			ライン以外の部分の数字の構成：6!種<br>
+		</div>
+		<br>
+		789のラインがある場合の個数(123の場合と同じ)：\(8 \cdot 3! \cdot 6!\)
+		<br>
+		123と789のラインが両方ある場合の個数：<button id="expand2">展開</button>
+		<div id="tab2" class="collapsible">
+			ラインの方向や位置：8種<br>
+			ライン内の数字の構成：3!種<br>
+			ライン以外の部分の数字の構成：6!種<br>
+		</div>
+		<br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+		very long <br>
+	</body>
+
+	<script>
+		function toggle(name)
+		{
+			let x = document.getElementById(name);
+			if (x.style.display == "block")
+			{
+				x.style.display = "none";
+			} else
+			{
+				x.style.display = "block";
+			}
+		}
+
+		for(let i=1; i<3; i++)
+		{
+			let button_id = 'expand' + i;
+			let tab_name = 'tab' + i;
+			document.getElementById(button_id).addEventListener("click", function()
+			{
+				toggle(tab_name);
+			});
+
+		}
+
+
+
+	</script>
+	
+</html>

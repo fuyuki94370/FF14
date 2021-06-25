@@ -1,73 +1,113 @@
 <html>
+	<meta charset="utf-8">
 	<head>
-		<meta charset="utf-8">
 		<title>FF14の色々</title>
-		<style>
-			body {
-			padding: 25px;
+	</head>
+
+	<style>
+		body {
 			background-color: black;
 			color: white;
 			font-size: 25px;
-			}
+		}
 
-			.sidenav {
-				height: 100%;
-				width: 10%;
-				position: fixed;
-				z-index: 1;
-				top: 0;
-				left: 0;
-				background-color: #111;
-				overflow-x: hidden;
-				padding-top: 16px;
-			}
+		.top_panel {
+			width: 100%;
+			height: 10%;
+			position: fixed;
+			padding-top: 16px;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: #111;
+			overflow-x: hidden;
+		}
 
-			.link-button {
-				background-color: #444;
-				color: #eee;
-				cursor: pointer;
-				padding: 18px;
-				width: 100%;
-				border: none;
-				text-align: left;
-				outline: none;
-				font-size: 15px;
-				transition: 0.4s;
-			}
+		.side_panel {
+			height: 100%;
+			width: 10%;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: #111;
+			overflow-x: hidden;
+			padding-top: 16px;
+		}
 
-			.active, .link-button:hover {
-				background-color: #666; 
-			}
-		</style>
-	</head>
+		.link-button {
+			background-color: #444;
+			color: #eee;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 15px;
+			transition: 0.4s;
+		}
 
+		.link-button:hover {
+			background-color: #666; 
+		}
 
+		.right_division{
+			position:absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0px;
+			margin-left:10%;
+		}
+	</style>
 
 	<body>
-		<div>
-			<div class="main" style="display: flex; height: 100%;">
-				<div class="sidenav">
-					<button id="home.html" class="link-button" onclick="load_page(this.id)">ホーム</button>
-					<button id="cactpot/cactpot.html" class="link-button" onclick="load_page(this.id)">ミニ・くじテンダー必勝法</button>
-					<button id="simulator/simulator.html" class="link-button" onclick="load_page(this.id)">シミュレーター</button>
-				</div>
-				<div id="content" style="margin-left:10%; flex-grow:1; height:100%;">
-					
-				</div>
+		<div class="main" style="display: flex; height: 100%;">
+			<div class="side_panel">
+				<button id="home" class="link-button">ホーム</button>
+				<button id="cactpot" class="link-button">ミニ・くじテンダー必勝法</button>
+				<button id="simulator" class="link-button">シミュレーター</button>
+			</div>
+			<div id="contents" class="right_division">
+				
 			</div>
 		</div>
 	</body>
 
-	<script async>
-		var prev = document.getElementById("home.html");
-		function load_page(name)
+	<script>
+		let side_panel_active_button = null;
+
+		function update_side_panel_status(name)
 		{
-			document.getElementById("content").innerHTML = '<object type="text/html" style="width:100%;height:100%" data='+name+'></object>';
-			prev.style.color='white';
-			prev = document.getElementById(name);
-			prev.style.color='aqua';
+			if(side_panel_active_button) side_panel_active_button.style.color='white';
+			side_panel_active_button=document.getElementById(name);
+			side_panel_active_button.style.color='aqua';
 		}
 
-		load_page("home.html");
+		function load_page(name)
+		{
+			document.getElementById("contents").innerHTML = '<iframe style="width:100%; height:100%;" frameBorder="0" src='+name+'></iframe>';
+		}
+
+		function load_homepage()
+		{
+			load_page("home.html");
+			update_side_panel_status("home");
+		}
+
+		document.getElementById("home").addEventListener("click", load_homepage);
+		document.getElementById("cactpot").addEventListener("click", function()
+		{
+			load_page("cactpot/cactpot.html");
+			update_side_panel_status("cactpot");
+		});
+		document.getElementById("simulator").addEventListener("click", function()
+		{
+			load_page("simulator/simulator.html");
+			update_side_panel_status("simulator");
+		});
+
+		document.getElementById("home").click();
 	</script>
 </html>

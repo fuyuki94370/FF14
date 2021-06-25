@@ -1,27 +1,104 @@
 <html>
+	<meta charset='utf-8'>
 	<head>
 		<title>ミニくじテンダー必勝法</title>
-		<style>
-		body {
-		  padding: 25px;
-		  background-color: black;
-		  color: white;
-		  font-size: 25px;
-		}
-		</style>
 	</head>
 
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+	<style>
+		body {
+		padding: 25px;
+		background-color: black;
+		color: white;
+		font-size: 25px;
+		}
+
+		.topnav {
+			width: 100%;
+			height: 10%;
+			position: fixed;
+			padding-top: 16px;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: #111;
+			overflow-x: hidden;
+		}
+
+		.link-button {
+			background-color: #444;
+			color: #eee;
+			cursor: pointer;
+			padding: 18px;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 15px;
+			transition: 0.4s;
+		}
+
+		.link-button:hover {
+			background-color: #666; 
+		}
+
+		.bottom_division{
+			position:absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0px; 
+			margin-top: 10%;
+			width:100%;
+		}
+	</style>
+
 	<body>
-		<img src="1.png">
-		<p>まずはYの形になるようにマスを削っていきます</p>
-		<img src="2.png">
-		<p>1、2、3が出る可能性があるラインを探します<br>
-		もし存在しないのなら7、8、9を探します</p>
-		<img src="3.png">
-		<p>上図の場合、真ん中の横ラインに1、2、3のラインの可能性があり、<br>
-		下の横ラインに7、8、9の可能性があります。<br>
-		1、2、3の方が報酬が美味いから、真ん中の横ラインを狙ってみます</p>
-		<img src="4.png">
-		<p>うまく10000MGP貰えました！</p>
+			<div class="topnav">
+				<button id="guide" class="link-button">必勝法</button>
+				<button id="expectation" class="link-button">期待値</button>
+			</div>
+
+			<div id="contents" class="bottom_division">
+
+			</div>
 	</body>
+
+	<script>
+		let top_panel_active_button = null;
+
+		function update_top_panel_status(name)
+		{
+			if(top_panel_active_button) top_panel_active_button.style.color='white';
+			top_panel_active_button=document.getElementById(name);
+			top_panel_active_button.style.color='aqua';
+		}
+
+		function load_page(name)
+		{
+			let s = '';
+			s += '<iframe style="width:100%; height:100%;" frameBorder="0" src='
+			s += name;
+			s += '></iframe>';
+			document.getElementById("contents").innerHTML = s;
+		}
+
+		document.getElementById("guide").addEventListener("click", function()
+		{
+			load_page("guide.html")
+			update_top_panel_status("guide");
+		});
+
+		document.getElementById("expectation").addEventListener("click", function()
+		{
+			let s = '';
+			s += '今制作中です～☆';
+			document.getElementById("contents").innerHTML = s;
+			update_top_panel_status("expectation");
+		});
+
+		document.getElementById("guide").click();
+		
+	</script>
 </html>
