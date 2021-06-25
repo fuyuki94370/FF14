@@ -57,7 +57,6 @@
 	<body>
 			<div class="topnav">
 				<button id="guide" class="link-button">必勝法</button>
-				<button id="expectation" class="link-button">期待値</button>
 			</div>
 
 			<div id="contents" class="bottom_division">
@@ -88,14 +87,6 @@
 		{
 			load_page("guide.html")
 			update_top_panel_status("guide");
-		});
-
-		document.getElementById("expectation").addEventListener("click", function()
-		{
-			let s = '';
-			s += '今制作中です～☆';
-			document.getElementById("contents").innerHTML = s;
-			update_top_panel_status("expectation");
 		});
 
 		document.getElementById("guide").click();
