@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<meta charset="utf-8">
 		<title>FF14の色々</title>
 		<style>
 			body {
@@ -46,8 +47,9 @@
 		<div>
 			<div class="main" style="display: flex; height: 100%;">
 				<div class="sidenav">
-					<button class="link-button" onclick="load_page('cactpot/cactpot.html')">ミニ・くじテンダー必勝法</button>
-					<button class="link-button" onclick="load_page('simulator/simulator.html')">シミュレーター</button>
+					<button id="home.html" class="link-button" onclick="load_page(this.id)">ホーム</button>
+					<button id="cactpot/cactpot.html" class="link-button" onclick="load_page(this.id)">ミニ・くじテンダー必勝法</button>
+					<button id="simulator/simulator.html" class="link-button" onclick="load_page(this.id)">シミュレーター</button>
 				</div>
 				<div id="content" style="margin-left:10%; flex-grow:1; height:100%;">
 					
@@ -56,11 +58,16 @@
 		</div>
 	</body>
 
-	<script>
-		function load_page(name) {
+	<script async>
+		var prev = document.getElementById("home.html");
+		function load_page(name)
+		{
 			document.getElementById("content").innerHTML = '<object type="text/html" style="width:100%;height:100%" data='+name+'></object>';
+			prev.style.color='white';
+			prev = document.getElementById(name);
+			prev.style.color='aqua';
 		}
 
-		window.onload = load_page("cactpot/cactpot.html")
+		load_page("home.html");
 	</script>
 </html>
