@@ -1,0 +1,98 @@
+<html>
+	<meta charset='utf-8'>
+	<head>
+		<title>期待値</title>
+	</head>
+	<style>
+		body{
+			font-size: 25px;
+			background-color: black;
+			color: white;
+		}
+
+		.collapsible{
+			display: none;
+			border:1px solid white;
+		}
+	</style>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>	
+
+	<body>
+		結論：<br>
+		必勝法で毎日3回やると、平均的に毎日最低でも3778.5MGPを貰えます。<br>
+		<br>
+		以下は数学：<br>
+		<hr>
+		
+		すべての可能性の個数：\(9! (= 9\times8\times7\cdots2\times1) \)<br>
+		123のラインが出る場合の個数：\(8 \cdot 3! \cdot 6!\)<br>
+		その確率＝\(\frac{8 \cdot 3! \cdot 6!}{9!} = \frac{2}{21}\)<button id="expand1">展開</button>
+		<div id="tab1" class="collapsible">
+			ラインの選び方：8種<br>
+			ライン内の数字の選び方：3!種<br>
+			ライン以外の部分の数字の選び方：6!種<br>
+		</div>
+		<br>
+		789のラインが出る場合の個数(123の場合と同じ)：\(8 \cdot 3! \cdot 6!\) <br>
+		その確率＝\(\frac{2}{21}\)
+		<br>
+		123と789のラインが両方出る場合の個数：\(6 \cdot 2 \cdot 3! \cdot 3! \cdot 3!\)種<br>
+		\(その確率＝\frac{6 \cdot 2 \cdot 3! \cdot 3! \cdot 3!}{9!} = \frac{1}{140}\)<button id="expand2">展開</button>
+		<div id="tab2" class="collapsible">
+			123と789ラインの選び方：\(6\cdot2\)種<br>
+			123ライン内の数字の選び方：3!種<br>
+			789ライン内の数字の選び方：3!種<br>
+			ライン以外の部分の数字の構成：3!種<br>
+		</div>
+		<hr>
+		平均的に1回あたりに貰えるMGP、数学の用語で言うとMGPの期待値です。<br>
+		\begin{align*}
+		期待値E &= 総合\sum_i (各可能性が出る確率p_i) \cdot (そこで貰える報酬x_i)\\
+		&=(123ライン{\color{red}だけ}の確率)\times 10000 + (789ラインだけの確率)\times 3600 + (両方出る確率)\times 10000 + \cdots \\
+		&=(123ライン{\color{red}出る}確率)\times 10000 + (789ライン{\color{red}だけ}の確率) \times 3600
+		\end{align*}
+		<br>
+		注目：<br>
+		#1:両方出る時は123取るので10000MGP貰うことになります。<br>
+		#2:他の可能性の報酬は大体少ないし計算がめんどいため、無視します。無視された部分は正数なので、実際は計算よりも多く貰えます<br>
+		#3:報酬10000の所を整理すれば、確率の部分がちょうど123ラインが出る確率になる<br>
+		<br>
+		\(789ライン{\color{red}だけ}出る確率 = 789ラインが出る確率 - 両方出る確率 = \frac{2}{21} - \frac{1}{140} = \frac{37}{420}\)
+		<br>
+		\(よって期待値E= \frac{2}{21}\times 10000 + \frac{37}{420} \times 3600 = \frac{26660}{21} \approx 1259.5\)<br>
+		つまりミニくじテンダー1回あたりに平均的に1259.5MGP以上を貰えることになります。<br>
+		もちろん3回やると3倍になって3778.5MGPになります。<br>
+
+	</body>
+
+	<script>
+		function toggle(name)
+		{
+			let x = document.getElementById(name);
+			if (x.style.display == "block")
+			{
+				x.style.display = "none";
+			} else
+			{
+				x.style.display = "block";
+			}
+		}
+
+		for(let i=1; i<3; i++)
+		{
+			let button_id = 'expand' + i;
+			let tab_name = 'tab' + i;
+			document.getElementById(button_id).addEventListener("click", function()
+			{
+				toggle(tab_name);
+			});
+
+		}
+
+
+
+	</script>
+	
+</html>

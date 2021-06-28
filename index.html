@@ -1,5 +1,6 @@
 <html>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<head>
 		<title>FF14の色々</title>
 	</head>
@@ -11,18 +12,6 @@
 			font-size: 25px;
 		}
 
-		.top_panel {
-			width: 100%;
-			height: 10%;
-			position: fixed;
-			padding-top: 16px;
-			z-index: 1;
-			top: 0;
-			left: 0;
-			background-color: #111;
-			overflow-x: hidden;
-		}
-
 		.side_panel {
 			height: 100%;
 			width: 10%;
@@ -32,7 +21,6 @@
 			left: 0;
 			background-color: #111;
 			overflow-x: hidden;
-			padding-top: 16px;
 		}
 
 		.link-button {
@@ -67,7 +55,6 @@
 			<div class="side_panel">
 				<button id="home" class="link-button">ホーム</button>
 				<button id="cactpot" class="link-button">ミニ・くじテンダー必勝法</button>
-				<button id="simulator" class="link-button">シミュレーター</button>
 			</div>
 			<div id="contents" class="right_division">
 				
@@ -101,11 +88,6 @@
 		{
 			load_page("cactpot/cactpot.html");
 			update_side_panel_status("cactpot");
-		});
-		document.getElementById("simulator").addEventListener("click", function()
-		{
-			load_page("simulator/simulator.html");
-			update_side_panel_status("simulator");
 		});
 
 		document.getElementById("home").click();

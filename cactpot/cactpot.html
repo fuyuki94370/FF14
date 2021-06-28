@@ -17,9 +17,8 @@
 
 		.topnav {
 			width: 100%;
-			height: 10%;
+			height: 8%;
 			position: fixed;
-			padding-top: 16px;
 			z-index: 1;
 			top: 0;
 			left: 0;
@@ -49,7 +48,7 @@
 			right: 0;
 			bottom: 0;
 			top: 0px; 
-			margin-top: 10%;
+			margin-top: 5%;
 			width:100%;
 		}
 	</style>
@@ -57,6 +56,8 @@
 	<body>
 			<div class="topnav">
 				<button id="guide" class="link-button">必勝法</button>
+				<button id="expectation" class="link-button">期待値</button>
+				<button id="simulator" class="link-button">シミュレーター</button>
 			</div>
 
 			<div id="contents" class="bottom_division">
@@ -87,6 +88,18 @@
 		{
 			load_page("guide.html")
 			update_top_panel_status("guide");
+		});
+
+		document.getElementById("expectation").addEventListener("click", function()
+		{
+			load_page("expectation.html");
+			update_top_panel_status("expectation");
+		});
+
+		document.getElementById("simulator").addEventListener("click", function()
+		{
+			load_page("simulator/simulator.html");
+			update_top_panel_status("simulator");
 		});
 
 		document.getElementById("guide").click();
