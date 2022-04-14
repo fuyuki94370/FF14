@@ -94,7 +94,6 @@
 		<div>
 			<div class="top-panel">
 				<button id="home"><i class="fa fa-home"></i>ホーム</button>
-				<button id="cactpot">ミニくじテンダー</button>
 				<button id="map">強欲の罠（地図）</button>
 			</div>
 			<br>
@@ -109,9 +108,7 @@
 				</p>
 				<img src="2022-04-08.png" style="margin: auto; width: 50%; display:block">
 			</div>
-			<div id="cactpot/contents" style="display: none">
-				test2
-			</div>
+
 			<div id="map/contents" style="display: none;">
 				<p style="text-align: center; font-size: 24;">早見表</p>
 				<p style="text-align: center">〇続行　×やめる</p>
@@ -223,17 +220,6 @@
 
 			if(active_page) active_page.style.display = "none";
 			active_page = document.getElementById("home/contents");
-			active_page.style.display = "block";
-		});
-
-		document.getElementById("cactpot").addEventListener("click", function()
-		{
-			if(active_button) active_button.className = "";
-			this.className = "active";
-			active_button = this;
-
-			if(active_page) active_page.style.display = "none";
-			active_page = document.getElementById("cactpot/contents");
 			active_page.style.display = "block";
 		});
 
