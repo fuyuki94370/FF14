@@ -2,94 +2,252 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<head>
-		<title>FF14の色々</title>
+		<title>FF14のいろいろ</title>
 	</head>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<style>
-		body {
+		body
+		{
 			background-color: black;
 			color: white;
-			font-size: 25px;
+			font-size: 16px;
+			font-family: 'Noto Sans JP';
 		}
 
-		.side_panel {
-			height: 100%;
-			width: 10%;
-			position: fixed;
-			z-index: 1;
+		.top-panel
+		{
+			width: 100%;
+			height: 5%;
+			background-color: #111;
 			top: 0;
 			left: 0;
-			background-color: #111;
-			overflow-x: hidden;
+			border: none;
+			position: fixed;
+			font-family: inherit;
 		}
 
-		.link-button {
-			background-color: #444;
-			color: #eee;
-			cursor: pointer;
-			padding: 18px;
-			width: 100%;
+		.top-panel button
+		{
+			background-color: inherit;
+			font-size: inherit;
+			font-family: inherit;
+			color: white;
 			border: none;
-			text-align: left;
-			outline: none;
+			transition: 0.4s;
+			height: 100%;
+			cursor: pointer;
+		}
+
+		.top-panel button:hover
+		{
+			background-color: #333;		
+		}		
+
+		.top-panel button.active
+		{
+			background-color: darkblue;
+		}
+
+		.top-panel button.active:hover
+		{
+			background-color: darkblue;
+		}
+
+		.left-panel
+		{
+			width: 10%;
+			position: fixed;
+			background-color: #111;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
+
+		.left-panel button
+		{
+			background-color: inherit;
+			width: 100%;
 			font-size: 15px;
+			padding: 18px;
+			color: white;
+			border: none;
 			transition: 0.4s;
 		}
 
-		.link-button:hover {
-			background-color: #666; 
+		.left-panel button:hover
+		{
+			background-color: #333;
 		}
 
-		.right_division{
-			position:absolute;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			top: 0px;
-			margin-left:10%;
+		.left-panel button.active
+		{
+			background-color: darkblue;
 		}
 	</style>
 
 	<body>
-		<div class="main" style="display: flex; height: 100%;">
-			<div class="side_panel">
-				<button id="home" class="link-button">ホーム</button>
-				<button id="cactpot" class="link-button">ミニ・くじテンダー必勝法</button>
+		<div>
+			<div class="top-panel">
+				<button id="home"><i class="fa fa-home"></i>ホーム</button>
+				<button id="cactpot">ミニくじテンダー</button>
+				<button id="map">強欲の罠（地図）</button>
 			</div>
-			<div id="contents" class="right_division">
-				
+			<br>
+		
+			<div id="home/contents" style="display: none">
+				<p style="text-align: center;">
+					<a href="https://twitter.com/FWt3qGQkxBoh">＜アシエン・ハイムズニックス＞<br>猫又冬雪（ねこまた　ふゆき）</a><br>
+					「ファイナルファンタジーXIVの心得の置き場です<br>
+					気が向いたらアプデします(*´ω｀*)<br>
+					<br>
+					。。。そ、そんなに期待されても💦」
+				</p>
+				<img src="2022-04-08.png" style="margin: auto; width: 50%; display:block">
 			</div>
+			<div id="cactpot/contents" style="display: none">
+				test2
+			</div>
+			<div id="map/contents" style="display: none;">
+				<p style="text-align: center; font-size: 24;">早見表</p>
+				<p style="text-align: center">〇続行　×やめる</p>
+				<table style="margin:auto">
+					<tr>
+						<th></th>
+						<th colspan="9">与えられたカードの点数</th>
+					</tr>
+					<tr>
+						<th></th>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>5</th>
+						<th>6</th>
+						<th>7</th>
+						<th>8</th>
+						<th>9</th>
+					</tr>
+					<tr>
+						<th>1回目</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+					</tr>
+
+					<tr>
+						<th>2回目</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+					</tr>
+
+					<tr>
+						<th>3回目</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>×</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+					</tr>
+
+					<tr>
+						<th>4回目</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>×</th>
+						<th>×</th>
+						<th>×</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>〇</th>
+					</tr>
+
+					<tr>
+						<th>5回目</th>
+						<th>〇</th>
+						<th>〇</th>
+						<th>×</th>
+						<th>×</th>
+						<th>×</th>
+						<th>×</th>
+						<th>×</th>
+						<th>〇</th>
+						<th>〇</th>
+					</tr>
+				</table>
+
+				<hr>
+
+				<p>
+					HIGHとLOWは無論言うまでもないが、どこでやめれば統計的に一番お得になるのか、それを示す早見表です<br>
+					シミュで得たのではなく、数学的に導き出した結果なので、FFXIVのRNG(乱数発生器)がフェアである限り100％正しいです<br>
+					<br>
+					数学の推論は、めちゃくちゃ長いので割愛させていただきます　どうせ見たい人もいないはずで、書くのもめんどいですし　えへ☆
+				</p>
+			</div>
+
 		</div>
 	</body>
 
 	<script>
-		let side_panel_active_button = null;
+		let active_button = null
+		let active_page = null
 
-		function update_side_panel_status(name)
+		document.getElementById("home").addEventListener("click", function()
 		{
-			if(side_panel_active_button) side_panel_active_button.style.color='white';
-			side_panel_active_button=document.getElementById(name);
-			side_panel_active_button.style.color='aqua';
-		}
+			if(active_button) active_button.className = "";
+			this.className = "active";
+			active_button = this;
 
-		function load_page(name)
-		{
-			document.getElementById("contents").innerHTML = '<iframe style="width:100%; height:100%;" frameBorder="0" src='+name+'></iframe>';
-		}
-
-		function load_homepage()
-		{
-			load_page("home.html");
-			update_side_panel_status("home");
-		}
-
-		document.getElementById("home").addEventListener("click", load_homepage);
-		document.getElementById("cactpot").addEventListener("click", function()
-		{
-			load_page("cactpot/cactpot.html");
-			update_side_panel_status("cactpot");
+			if(active_page) active_page.style.display = "none";
+			active_page = document.getElementById("home/contents");
+			active_page.style.display = "block";
 		});
 
-		document.getElementById("cactpot").click();
+		document.getElementById("cactpot").addEventListener("click", function()
+		{
+			if(active_button) active_button.className = "";
+			this.className = "active";
+			active_button = this;
+
+			if(active_page) active_page.style.display = "none";
+			active_page = document.getElementById("cactpot/contents");
+			active_page.style.display = "block";
+		});
+
+		document.getElementById("map").addEventListener("click", function()
+		{
+			if(active_button) active_button.className = "";
+			this.className = "active";
+			active_button = this;
+
+			if(active_page) active_page.style.display = "none";
+			active_page = document.getElementById("map/contents");
+			active_page.style.display = "block";
+		});
+
+		document.getElementById("home").click();
 	</script>
 </html>
