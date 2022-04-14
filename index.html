@@ -19,6 +19,16 @@
 			font-family: 'Noto Sans JP';
 		}
 
+		.style-button
+		{
+			background-color: inherit;
+			font-size: inherit;
+			font-family: inherit;
+			color: white;
+			transition: 0.4s;
+			cursor: pointer;
+		}
+
 		.top-panel
 		{
 			width: 100%;
@@ -43,17 +53,19 @@
 			cursor: pointer;
 		}
 
-		.top-panel button:hover
+		
+
+		.top-panel button:hover, .style-button:hover
 		{
 			background-color: #333;		
 		}		
 
-		.top-panel button.active
+		.top-panel button.active, .style-button.active
 		{
 			background-color: darkblue;
 		}
 
-		.top-panel button.active:hover
+		.top-panel button.active:hover, .style-button.active:hover
 		{
 			background-color: darkblue;
 		}
@@ -96,6 +108,7 @@
 				<button id="home"><i class="fa fa-home"></i>ホーム</button>
 				<button id="cactpot">ミニくじテンダー</button>
 				<button id="map">強欲の罠（地図）</button>
+				<button id="macro">せいとんマクロ</button>
 			</div>
 			<br>
 		
@@ -221,6 +234,28 @@
 				</p>
 			</div>
 
+			<div id="macro/contents" style="display: none">
+				<p>
+					アーマリーチェストとかばんをすべてせいとんするマクロ<br>
+					特にジョブチェンジとかでアーマリーチェストがめちゃくちゃになった時に便利
+				</p>
+				<p>
+					/itemsort clear inventory <br>
+					/itemsort condition inventory itemlevel des <br>
+					/itemsort condition inventory category asc <br>
+					/itemsort execute inventory <br>
+					/itemsort clear armourychest <br>
+					/itemsort condition armourychest id asc <br>
+					/itemsort condition armourychest itemlevel des <br>
+					/itemsort condition armourychest level des <br>
+					/itemsort condition armourychest category asc <br>
+					/itemsort execute armourychest <br>
+				</p>
+
+				<button id="macro/contents/copy" class="style-button">コピー</button>
+
+			</div>
+
 		</div>
 	</body>
 
@@ -259,6 +294,22 @@
 			if(active_page) active_page.style.display = "none";
 			active_page = document.getElementById("map/contents");
 			active_page.style.display = "block";
+		});
+
+		document.getElementById("macro").addEventListener("click", function()
+		{
+			if(active_button) active_button.className = "";
+			this.className = "active";
+			active_button = this;
+
+			if(active_page) active_page.style.display = "none";
+			active_page = document.getElementById("macro/contents");
+			active_page.style.display = "block";
+		});
+
+		document.getElementById("macro/contents/copy").addEventListener("click", function()
+		{
+			navigator.clipboard.writeText(`/itemsort clear inventory\r\n/itemsort condition inventory itemlevel des\r\n/itemsort condition inventory category asc\r\n/itemsort execute inventory\r\n/itemsort clear armourychest\r\n/itemsort condition armourychest id asc\r\n/itemsort condition armourychest itemlevel des\r\n/itemsort condition armourychest level des\r\n/itemsort condition armourychest category asc\r\n/itemsort execute armourychest\r\n`);
 		});
 
 		document.getElementById("home").click();
