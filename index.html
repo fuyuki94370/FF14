@@ -94,6 +94,7 @@
 		<div>
 			<div class="top-panel">
 				<button id="home"><i class="fa fa-home"></i>ホーム</button>
+				<button id="cactpot">ミニくじテンダー</button>
 				<button id="map">強欲の罠（地図）</button>
 			</div>
 			<br>
@@ -108,7 +109,22 @@
 				</p>
 				<img src="2022-04-08.png" style="margin: auto; width: 50%; display:block">
 			</div>
-
+			<div id="cactpot/contents" style="display: none">
+				<p>10000MGPと3600MGPを貰えるチャンスがあれば確実に貰うだけです。<br>
+					どうしても10000MGPと3600MGPのラインが出ないのなら<span style="color:red;">吉田に相談してください☆</span></p>
+					<p>スタート！</p>
+					<img src="1.png">
+					<p>まずはYの形になるようにマスを削っていきます</p>
+					<img src="2.png">
+					<p>1、2、3が出る可能性があるラインを探します<br>
+					もし存在しないのなら7、8、9を探します</p>
+					<img src="3.png">
+					<p>上図の場合、真ん中の横ラインに1、2、3のラインの可能性があり、<br>
+					下の横ラインに7、8、9の可能性があります。<br>
+					1、2、3の方が報酬が美味いから、真ん中の横ラインを狙ってみます</p>
+					<img src="4.png">
+				<p>うまく10000MGP貰えました！</p>
+			</div>
 			<div id="map/contents" style="display: none;">
 				<p style="text-align: center; font-size: 24;">早見表</p>
 				<p style="text-align: center">〇続行　×やめる</p>
@@ -220,6 +236,17 @@
 
 			if(active_page) active_page.style.display = "none";
 			active_page = document.getElementById("home/contents");
+			active_page.style.display = "block";
+		});
+
+		document.getElementById("cactpot").addEventListener("click", function()
+		{
+			if(active_button) active_button.className = "";
+			this.className = "active";
+			active_button = this;
+
+			if(active_page) active_page.style.display = "none";
+			active_page = document.getElementById("cactpot/contents");
 			active_page.style.display = "block";
 		});
 
