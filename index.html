@@ -316,6 +316,8 @@
 		let page = params.get('page');
 
 		page ? document.getElementById(page).click() : document.getElementById("home").click();
+
+		delete params;
 		
 	</script>
 </html>
